@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header_text %}
+{% endblock header_text %}
+
+{% block main %}
+<div class="container">
+    <div class="content text-center pb-5">
+        <h2 class="fw-bold">Payment was successful! Thank you for your purchase!</h2>
+        <p class="fs-5">You can continue shopping</p>
+        <a href="{% url 'product_list' %}" class="btn btn-success mb-4">Go back to the main page</a>
+    </div>
+</div>
+{% endblock main %}

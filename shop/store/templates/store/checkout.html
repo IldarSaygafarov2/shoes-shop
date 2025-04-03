@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block header_text %}
+{% endblock header_text %}
+
+{% block main %}
+    <main style="margin-bottom: 50px">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="box-element">
+                        <a href="{% url 'cart' %}" class="btn btn-primary">Back to cart</a>
+                        <hr>
+                        <h3>Ordered products</h3>
+                        <hr>
+                        <div class="cart-row">
+                            <div style="flex:2"></div>
+                            <div style="flex:2"><strong>Product</strong></div>
+                            <div style="flex:2"><strong>Price</strong></div>
+                            <div style="flex:2"><strong>Quantity</strong></div>
+                            <div style="flex:2"><strong>Total</strong></div>
+                        </div>
+                        {% for item in items %}
+                            {% include 'store/components/_cart_row.html' %}
+                        {% endfor %}
+
+                        <h5>Products quantity: {{ order.get_cart_total_quantity }}</h5>
+                        <h5>Total price: {{ order.get_cart_total_price }}$</h5>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="box-element">
+                        {#                    <form action="{% url 'payment' %}" method="post" enctype="multipart/form-data">#}
+                        {#                        {% csrf_token %}#}
+                        {#                        <div id="user-info">#}
+                        {#                            <hr>#}
+                        {#                            <p class="fw-bold fs-4">Your data</p>#}
+                        {#                            <hr>#}
+                        {#                            <div class="form-field">#}
+                        {#                                {{ customer_form.first_name }}#}
+                        {#                            </div>#}
+                        {##}
+                        {#                            <div class="form-field">#}
+                        {#                                {{ customer_form.last_name }}#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        {##}
+                        {#                        <div id="shipping-info">#}
+                        {#                            <hr>#}
+                        {#                            <p>Shipping address</p>#}
+                        {#                            <hr>#}
+                        {#                            {% for field in shipping_form %}#}
+                        {#                            <div class="form-field">#}
+                        {#                                {{ field }}#}
+                        {#                            </div>#}
+                        {#                            {% endfor %}#}
+                        {#                        </div>#}
+                        {##}
+                        {#                        <button class="btn btn-success" type="submit">PAY</button>#}
+                        {#                    </form>#}
+                        <form action="{% url 'payment' %}" method="post">
+                            {% csrf_token %}
+                            <div id="user-info">
+                                <p class="fw-bold fs-4">Your email</p>
+                                <div class="form-field">
+                                    <input type="email" placeholder="email" class="form-control" name="email">
+                                </div>
+                                <button class="btn btn-success mt-0" type="submit">PAY</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+{% endblock main %}

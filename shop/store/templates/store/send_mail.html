@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header_text %}
+{% endblock header_text %}
+
+{% block main %}
+<div class="container mb-4">
+    <h3>Sending to email addresses</h3>
+    <form action="{% url 'send_mail' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="text" id="" cols="30" rows="10" placeholder="Text...." class="form-control"></textarea>
+        <button class="btn btn-dark rounded" type="submit" style="position: relative; left: 93.5%">Send</button>
+    </form>
+</div>
+{% endblock main %}

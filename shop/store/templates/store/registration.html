@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header_text %}
+{% endblock header_text %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block main %}
+<section class="vh-100">
+    <div class="mask d-flex align-items-center h-100">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card text-white" style="border-radius: 15px; background-color: #2C2C2C; margin-top: -5px">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5" style="color:white">Create an account</h2>
+
+                            <form action="{% url 'register' %}" method="post" class="registration-form"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="form-outline mb-4">
+                                    {{ registration_form.username }}
+                                    <label class="form-label">Username</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    {{ registration_form.first_name }}
+                                    <label class="form-label">First name</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    {{ registration_form.last_name }}
+                                    <label class="form-label">Last name</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    {{ registration_form.email }}
+                                    <label class="form-label">Email</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    {{ registration_form.password1 }}
+                                    <label class="form-label">Password</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    {{ registration_form.password2 }}
+                                    <label class="form-label">Repeat your password</label>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-light text-dark btn-lg">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </form>
+
+
+                            <p class="text-center mt-5 mb-0">Have already an account?
+                                <a href="{% url 'sign_in' %}" class="fw-bold"><u>Login here</u></a>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

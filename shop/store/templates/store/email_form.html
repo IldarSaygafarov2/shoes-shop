@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header_text %}
+{% endblock header_text %}
+
+{% block main %}
+<div class="bg-grey">
+    <div class="container">
+        <div class="row justify justify-content-center">
+
+            <div class="col-12 col-lg-9 col-xl-8">
+                <div class="card shadow-lg bg-body-tertiary rounded">
+                    <div class="row justify-content-center">
+                        <div class="col-md-9 col-11">
+
+                            <div class="row mt-0">
+                                <div class="col-md-12 ">
+                                    <h4 class="text-center heading" style="color: black">SUBSCRIBE TO LEARN ABOUT NEW PRODUCTS</h4>
+                                    <p class="text-center sub-heading">SUBSCRIBE TO OUR NEWSLETTER FOR THE LATEST
+                                        NEWS</p>
+                                </div>
+                            </div>
+
+                            <form action="{% url 'save_mail' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group row mb-3">
+                                    <div class="col-md-12 mb-0">
+                                        <input type="text" placeholder="ENTER YOUR EMAIL" name="email"
+                                               class="form-control input-box rm-border text-center">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center mb-0">
+                                    <div class="col-md-12 px-3 text-center">
+                                        <input type="submit" value="GET IT NOW!"
+                                               class="btn btn-block btn-black rm-border">
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="form-group row justify-content-center">
+                                <div class="col-md-12 px-3 mt-4">
+                                    <a href="{% url 'product_list' %}"><p class="thanks">No thanks</p></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock main %}

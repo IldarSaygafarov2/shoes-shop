@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header_text %}
+{% endblock header_text %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block main %}
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100" style="margin-top: -90px">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card text-white" style="border-radius: 1rem; background-color: #2C2C2C">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <h2 class="fw-bold mb-2 text-uppercase" style="color: white">Login</h2>
+                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                            <form action="{% url 'login' %}" method="post" class="login-form" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-outline form-white mb-4">
+                                    {{ login_form.username }}
+                                    <label class="form-label">Username</label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    {{ login_form.password }}
+                                    <label class="form-label">Password</label>
+                                </div>
+
+                                <button class="btn btn-light text-dark btn-lg px-5" style="margin-top:-13px"
+                                        type="submit">Login
+                                </button>
+                            </form>
+                        </div>
+
+
+                        <p class="mb-0">Don't have an account?
+                            <a href="{% url 'registration' %}" class="fw-bold"><u>Sign Up</u></a>
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}
