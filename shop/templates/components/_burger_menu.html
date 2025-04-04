@@ -13,12 +13,21 @@
                         <a class="header_nav-link" href=""><img src="images/icons/ru_lang_icon.svg"
                                                                 alt=""></a>
                     </li>
+
                     {% for category in categories %}
                     <li class="header_nav-item"><a class="header_nav-link" href="">{{ category.title }}</a></li>
                     {% endfor %}
-                    <li class="header_nav-item"><a class="header_nav-link" href="">MY CART</a></li>
-                    <li class="header_nav-item"><a class="header_nav-link" href="{% url 'registration' %}">SIGN UP</a></li>
+
+                    {% if request.user.is_authenticated %}
+                    <li class="header_nav-item"><a class="header_nav-link" href="{% url 'user_profile' %}">MY PROFILE</a></li>
+                    <li class="header_nav-item"><a class="header_nav-link" href="{% url 'cart' %}">MY CART</a></li>
+                    <li class="header_nav-item"><a class="header_nav-link" href="{% url 'favourite_products' %}">FAVOURITE</a></li>
+                    <li class="header_nav-item"><a class="header_nav-link" href="{% url 'logout' %}">LOGOUT</a></li>
+                    {% else %}
                     <li class="header_nav-item"><a class="header_nav-link" href="{% url 'sign_in' %}">LOGIN</a></li>
+                    <li class="header_nav-item"><a class="header_nav-link" href="{% url 'registration' %}">SIGN UP</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>

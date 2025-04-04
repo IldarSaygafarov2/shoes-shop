@@ -18,7 +18,7 @@ class ProductList(ListView):
     model = Product
     context_object_name = 'categories'
     extra_context = {
-        'title': '1357 STORE: Main page'
+        'title': '1357 ELITE: Main page'
     }
 
     def get_queryset(self):
@@ -196,7 +196,7 @@ def send_mail_to_customer(request):
             mail_list = Mail.objects.all()
             for email in mail_list:
                 mail = send_mail(
-                    subject='COURSES CORPORATION has news for you',
+                    subject='1357 ELITE has news for you',
                     message=text,
                     from_email=settings.EMAIL_HOST_USER,
                     recipient_list=[email],
@@ -287,7 +287,7 @@ def create_checkout_session(request):
         #     address.save()
 
         mail = send_mail(
-            subject='COURSES CORPORATION has news for you',
+            subject='1357 ELITE has news for you',
             message=msg,
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[request.POST.get('email')],
