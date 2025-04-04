@@ -350,7 +350,7 @@ def clear2(request):
 #     user = request.user
 #     return render(request, 'profile.html', {'user': user})
 
-@login_required
+@login_required(login_url='sign_in')
 def user_profile(request):
     context = {
         "username": request.user.username,
